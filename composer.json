@@ -1,0 +1,16 @@
+{
+    "name": "tjsoler/phpfmt",
+    "description": "Style Enforcer",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Tomás Soler",
+            "email": "tomas@tjsoler.me"
+        }
+    ],
+    "require": {},
+    "require-dev": {
+        "phpunit/phpunit": "^6.0",
+        "symfony/console": "^3.2"
+    }
+}
