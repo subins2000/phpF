@@ -726,8 +726,8 @@ if (!isset($testEnv)) {
                     }
                 }
 
-                $progress = new \Symfony\Component\Console\Helper\ProgressBar(
-                    new \Symfony\Component\Console\Output\StreamOutput(fopen('php://stderr', 'w')),
+                $progress = new ProgressBar(
+                    new StreamOutput(fopen('php://stderr', 'w')),
                     sizeof(iterator_to_array($files))
                 );
                 $progress->start();

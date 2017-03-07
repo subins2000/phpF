@@ -213,10 +213,11 @@ abstract class BaseCodeFormatter
         }
 
         if (!class_exists($pass)) {
-            $passName = sprintf('ExternalPass%s', $pass);
-            $passes = array_reverse($this->passes, true);
-            $passes[$passName] = new ExternalPass($pass);
-            $this->passes = array_reverse($passes, true);
+            sprintf("Class doesn't exist: $pass");
+            // $passName = sprintf('ExternalPass%s', $pass);
+            // $passes = array_reverse($this->passes, true);
+            // $passes[$passName] = new ExternalPass($pass);
+            // $this->passes = array_reverse($passes, true);
 
             return;
         }

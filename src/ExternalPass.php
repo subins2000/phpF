@@ -27,7 +27,7 @@ class ExternalPass
         $pipes = null;
 
         $external = str_replace('fmt.', 'fmt-external.', $cwd . DIRECTORY_SEPARATOR . $argv[0]);
-        var_dump($_SERVER);exit();
+
         $cmd = $_SERVER['_'] . ' ' . $external . ' --pass=' . $this->passName;
         $process = proc_open(
             $cmd,
