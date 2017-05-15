@@ -11622,26 +11622,6 @@ EOT;
 				case T_CONSTANT_ENCAPSED_STRING:
 					$this->appendCode( $text );
 					break;
-				case T_COMMENT:
-					$isComment = false;
-					if (
-						 ! $this->leftUsefulTokenIs( [T_OPEN_TAG] ) &&
-						$this->rightTokenIs( [
-							T_IF,
-							T_DO,
-							T_FOR,
-							T_FOREACH,
-							T_SWITCH,
-							T_WHILE,
-							T_COMMENT,
-							T_DOC_COMMENT,
-						] )
-					) {
-						$this->appendCode( $this->newLine );
-						$isComment = true;
-					}
-					$this->appendCode( $text );
-					break;
 				case T_IF:
 				case T_DO:
 				case T_FOR:
