@@ -1467,21 +1467,28 @@ namespace {
 		$opts = [
 			'http' => [
 				'method' => 'GET',
-				'header' => "User-agent: phpf fmt.phar selfupdate\r\n",
+				'header' => "User-agent: phpf phpf.phar selfupdate\r\n",
 			],
 		];
 
 		$context = stream_context_create( $opts );
 
-		$releases = json_decode( file_get_contents( 'https://api.github.com/repos/phpf/fmt/tags', false, $context ), true );
+		$releases = json_decode( file_get_contents( 'https://api.github.com/repos/subins2000/phpF/tags', false, $context ), true );
 		$commit   = json_decode( file_get_contents( $releases[0]['commit']['url'], false, $context ), true );
 		$files    = json_decode( file_get_contents( $commit['commit']['tree']['url'], false, $context ), true );
+
 		foreach ( $files['tree'] as $file ) {
-			if ( 'fmt.phar' == $file['path'] ) {
-				$phar_file = base64_decode( json_decode( file_get_contents( $file['url'], false, $context ), true )['content'] );
-			}
-			if ( 'fmt.phar.sha1' == $file['path'] ) {
-				$phar_sha1 = base64_decode( json_decode( file_get_contents( $file['url'], false, $context ), true )['content'] );
+			if ( 'build' === $file['path'] ) {
+				$build_dir = json_decode( file_get_contents( $file['url'], false, $context ), true );
+
+				foreach ( $build_dir['tree'] as $file2 ) {
+					if ( 'phpf.phar' == $file['path'] ) {
+						$phar_file = base64_decode( json_decode( file_get_contents( $file['url'], false, $context ), true )['content'] );
+					}
+					if ( 'phpf.phar.sha1' == $file['path'] ) {
+						$phar_sha1 = base64_decode( json_decode( file_get_contents( $file['url'], false, $context ), true )['content'] );
+					}
+				}
 			}
 		}
 		if (  ! isset( $phar_sha1 ) || ! isset( $phar_file ) ) {
@@ -13207,7 +13214,7 @@ EOT;
 		];
 
 		if ( $inPhar ) {
-			$options['--selfupdate'] = 'self-update fmt.phar from Github';
+			$options['--selfupdate'] = 'self-update phpf.phar from Github';
 			$options['--version']    = 'version';
 		}
 		$options['--cache[=FILENAME]'] .= ( Cacher::DEFAULT_CACHE_FILENAME );
