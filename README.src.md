@@ -1,12 +1,10 @@
-# phpf
+# phpF
 
 [![Build Status](https://travis-ci.org/subins2000/phpF.svg?branch=master)](https://travis-ci.org/subins2000/phpF)
 
-The **phpf** project was busted and development got stagnated in 2016. This is a fork aimed at continuing the development of **phpf**.
+**phpF** formats PHP code by making it readable and helps your code to follow coding guidelines.
 
-## What Is It ?
-
-**phpf** formats PHP code by making it readable and following a specific coding guideline.
+This is a fork of the project **phpfmt**.
 
 ## Requirements
 
