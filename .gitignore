@@ -1,2 +1,3 @@
 .phpintel
 *.sublime*
+build/*
